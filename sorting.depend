@@ -1,0 +1,53 @@
+# depslib dependency file v1.0
+1735060531 source:c:\programs\codebl\sorting\input.c
+	"common.h"
+	"input.h"
+	"queue_operations.h"
+
+1735063589 source:c:\programs\codebl\sorting\output.c
+	"common.h"
+
+1735063445 c:\programs\codebl\sorting\common.h
+	<stdio.h>
+	<locale.h>
+	<stdlib.h>
+	<string.h>
+	<limits.h>
+	<time.h>
+	<math.h>
+	<float.h>
+
+1734425145 source:c:\programs\codebl\common\random.c
+	"common.h"
+
+1734532503 c:\programs\codebl\common\common.h
+	<stdio.h>
+	<stdlib.h>
+	<limits.h>
+	<time.h>
+
+1734574647 c:\programs\codebl\sorting\input.h
+	"queue_operations.h"
+
+1734391312 c:\programs\codebl\common\random.h
+
+1734571441 c:\programs\codebl\sorting\output.h
+
+1735068737 source:c:\programs\codebl\sorting\main.c
+	"common.h"
+	"input.h"
+	"output.h"
+	"sorting.h"
+
+1734567739 c:\programs\codebl\sorting\queue_operations.h
+
+1735065071 source:c:\programs\codebl\sorting\queue_operations.c
+	"common.h"
+	"queue_operations.h"
+
+1735068637 source:c:\programs\codebl\sorting\sorting.c
+	"common.h"
+	"queue_operations.h"
+
+1735068637 c:\programs\codebl\sorting\sorting.h
+
