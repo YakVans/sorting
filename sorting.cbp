@@ -31,10 +31,6 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="../common/random.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="../common/random.h" />
 		<Unit filename="common.h" />
 		<Unit filename="input.c">
 			<Option compilerVar="CC" />

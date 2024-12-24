@@ -5,7 +5,7 @@
 
 #define DOUBLE_MAX_DIGIT 18
 
-int input();
 int processing_c_symb(char, int*, int*, int*, int*, char*, int*, Queue*);
+int input();
 
 #endif // INPUT_H_INCLUDED

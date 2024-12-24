@@ -6,20 +6,32 @@
 // 15 значащих цифр у double
 int main()
 {
-    setlocale(LC_ALL, "Rus"); //вывод русских букв
+    setlocale(LC_ALL, "Rus");
+
     Queue nums;
     declar_queue(&nums);
     input(&nums);
-    print_queue(&nums);
+    char o_filename[256];
+    create_output(o_filename);
+
+    output(nums, o_filename);
+
     Queue sorted_nums1;
     declar_queue(&sorted_nums1);
+    clock_t start1 = clock();
     select_sort(&sorted_nums1, &nums);
-    print_queue(&sorted_nums1);
+    clock_t end1 = clock();
+    printf("Время выполнения сортировки выбором: %f\n", (float)(end1 - start1) / CLOCKS_PER_SEC);
 
     Queue sorted_nums2;
     declar_queue(&sorted_nums2);
+    clock_t start2 = clock();
     quick_sort(&sorted_nums2, &nums);
-    print_queue(&sorted_nums2);
+    clock_t end2 = clock();
+    printf("Время выполнения быстрой сортировки: %f\n", (float)(end2 - start2) / CLOCKS_PER_SEC);
+
+    output(sorted_nums2, o_filename);
+
     return 0;
 }
 

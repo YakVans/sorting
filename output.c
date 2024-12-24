@@ -10,13 +10,12 @@ void print_queue(Queue *q) {
     printf("\n");
 }
 
-int output(Queue q)
+int create_output(char *o_filename)
 {
     int c_symb;
 
-    char output_filename_pattern[7] = "--file ";
+    char output_filename_pattern[8] = "--file ";
     int pos_in_output_filename_pattern = 0;
-    char o_filename[256];
     int pos_in_o_filename = 0;
 
     while ((c_symb = getc(stdin)) != EOF && c_symb != '\n') {
@@ -36,7 +35,8 @@ int output(Queue q)
                 continue;
             }
             else {
-                return 1; // не то после --
+                puts("Неизвестная команда после --. Возможные команды: --rfile [filename], --file [filename]. Первая возможна вместо ручного ввода чисел с клавиатуры. Вторая возможна только после какого-либо ввода чисел.");
+                return 1;
             }
         }
         else if (pos_in_output_filename_pattern == 7) {
@@ -50,7 +50,8 @@ int output(Queue q)
         }
         else {
             if (pos_in_o_filename == 255) { // нужно добавить случай когда пользователь после o_filename до \n ' ' вводит
-                return 2; //слишком длинное имя файла
+                puts("Слишком длинное имя файла. Вводите имя не больше 255 символов.");
+                return 2;
             }
             else {
                 o_filename[pos_in_o_filename++] = c_symb;
@@ -61,15 +62,32 @@ int output(Queue q)
     FILE *file = fopen(o_filename, "w");
 
     if (file == NULL) {
-        return 3; //ошибка открытия файла
+        puts("Ошибка открытия файла.");
+        return 3;
+    }
+    fclose(file);
+    return 0;
+}
+
+void output(Queue q, char *o_filename)
+{
+    FILE *file = fopen(o_filename, "a");
+    if (file == NULL) {
+        puts("Ошибка открытия файла.");
+        return;
     }
 
+    if (q.BegQ == NULL) {
+        puts("Очередь пуста.");
+        fclose(file);
+        return;
+    }
 
     Elem *num = q.BegQ;
-    while (num->link != NULL) {
-        fprintf(file, "%lld ", num->inf);
+    while (num != NULL) {
+        fprintf(file, "%lf ", num->inf);
         num = num->link;
     }
-    fprintf(file, "%lld\n", num->inf);
+    fprintf(file, "\n");
     fclose(file);
 }

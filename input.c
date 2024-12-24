@@ -73,6 +73,7 @@ int processing_c_symb(char c_symb, int *num_sign_dig, int *num_zero_dig, int *mi
     else {
         return 9;
     }
+    return 0;
 }
 
 int input(Queue *nums)
@@ -80,12 +81,12 @@ int input(Queue *nums)
     setlocale(LC_ALL, "Rus");
     int c_symb;
 
-    char input_filename_pattern[8] = "--rfile ";
+    char input_filename_pattern[9] = "--rfile ";
     int pos_in_input_filename_pattern = 0;
     char r_filename[256];
     int pos_in_r_filename = 0;
 
-    while ((c_symb = getc(stdin)) != EOF && c_symb != '\n') {
+    while ((c_symb = getc(stdin)) != '\n') {
         if (pos_in_input_filename_pattern == 0) {
             if (c_symb == ' ') {
                 continue;
@@ -130,7 +131,7 @@ int input(Queue *nums)
         else {
             if (pos_in_r_filename == 255) { // нужно добавить случай когда пользователь после r_filename до \n ' ' вводит
                 puts("Слишком длинное имя файла. Вводите имя не больше 255 символов.");
-                return 2; //слишком длинное имя файла
+                return 2;
             }
             else {
                 r_filename[pos_in_r_filename++] = c_symb;
@@ -143,7 +144,7 @@ int input(Queue *nums)
 
     if (is_input_from_file && rfile == NULL) {
         puts("Ошибка открытия файла.");
-        return 3; //ошибка открытия файла
+        return 3;
     }
 
     int curr_num_of_num = 0;
@@ -160,12 +161,10 @@ int input(Queue *nums)
         curr_num[0] = '-';
         num_of_last_digit = 1;
     }
-
     int error = 0;
 
     if (is_input_from_file == 0) {
         do {
-            //printf("%c, %d, %d, %d, %d, %s, %d, %lf\n",c_symb, num_sign_dig, num_zero_dig, minus_was, dot_was, curr_num, num_of_last_digit, nums.EndQ == NULL ? 0 : nums.EndQ->inf);
             error = processing_c_symb(c_symb, &num_sign_dig, &num_zero_dig, &minus_was, &dot_was, curr_num, &num_of_last_digit, nums);
             if (error != 0 || c_symb == '\n') {
                 break;
@@ -173,12 +172,12 @@ int input(Queue *nums)
         } while ((c_symb = getc(stdin)) != EOF);
     }
     else {
-        do {
+        while ((c_symb = getc(rfile)) != EOF) {
             error = processing_c_symb(c_symb, &num_sign_dig, &num_zero_dig, &minus_was, &dot_was, curr_num, &num_of_last_digit, nums);
             if (error != 0 || c_symb == '\n') {
                 break;
             }
-        } while ((c_symb = getc(rfile)) != EOF);
+        }
     }
     fclose(rfile);
 
