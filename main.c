@@ -34,6 +34,7 @@ int main()
     }
     output(nums, o_filename);
     output(sorted_nums2, o_filename);
+    puts("Числа записаны в файл.");
 
     return 0;
 }

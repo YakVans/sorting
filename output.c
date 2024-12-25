@@ -1,16 +1,5 @@
 #include "common.h"
 
-/*
-void print_queue(Queue *q) {
-    Elem *current = q->BegQ;
-    while (current != NULL) {
-        printf("%lf ", current->inf);
-        current = current->link;
-    }
-    printf("\n");
-}
-*/
-
 int create_output(char *o_filename)
 {
     int c_symb;
@@ -50,7 +39,7 @@ int create_output(char *o_filename)
             }
         }
         else {
-            if (pos_in_o_filename == 255) { // нужно добавить случай когда пользователь после o_filename до \n ' ' вводит
+            if (pos_in_o_filename == 255) {
                 puts("Слишком длинное имя файла. Вводите имя не больше 255 символов.");
                 return 2;
             }

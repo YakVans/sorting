@@ -128,7 +128,7 @@ int input(Queue *nums)
             }
         }
         else {
-            if (pos_in_r_filename == 255) { // нужно добавить случай когда пользователь после r_filename до \n ' ' вводит
+            if (pos_in_r_filename == 255) {
                 puts("Слишком длинное имя файла. Вводите имя не больше 255 символов.");
                 return 2;
             }
@@ -146,7 +146,6 @@ int input(Queue *nums)
         return 3;
     }
 
-    int curr_num_of_num = 0;
     char curr_num[DOUBLE_MAX_DIGIT+3];
     memset(curr_num, '\0', DOUBLE_MAX_DIGIT+3);
     int num_of_last_digit = 0;

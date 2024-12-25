@@ -1,6 +1,8 @@
 #ifndef INPUT_H_INCLUDED
 #define INPUT_H_INCLUDED
 
+#include <ctype.h>
+
 #include "queue_operations.h"
 
 #define DOUBLE_MAX_DIGIT 309
