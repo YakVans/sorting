@@ -1,6 +1,6 @@
 #include "common.h"
 
-
+/*
 void print_queue(Queue *q) {
     Elem *current = q->BegQ;
     while (current != NULL) {
@@ -9,6 +9,7 @@ void print_queue(Queue *q) {
     }
     printf("\n");
 }
+*/
 
 int create_output(char *o_filename)
 {

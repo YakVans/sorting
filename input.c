@@ -1,6 +1,5 @@
 #include "common.h"
 #include "input.h"
-#include "queue_operations.h"
 
 int processing_c_symb(char c_symb, int *num_sign_dig, int *num_zero_dig, int *minus_was, int *dot_was, char *curr_num, int *num_of_last_digit, Queue *nums)
 {
@@ -202,7 +201,7 @@ int input(Queue *nums)
         puts("Вы ввели пустую строку.");
         break;
     case 7:
-        printf("Слишком много значащих цифр (больше %d). Невозможна корректная сортировка\n", 17);
+        printf("Слишком много значащих цифр (больше %d). Невозможна корректная сортировка\n", 15);
         break;
     case 8:
         puts("Точка не может стоять в конце числа.");

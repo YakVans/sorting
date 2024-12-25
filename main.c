@@ -10,11 +10,9 @@ int main()
 
     Queue nums;
     declar_queue(&nums);
-    input(&nums);
-    char o_filename[256];
-    create_output(o_filename);
-
-    output(nums, o_filename);
+    if (input(&nums)) {
+        return 1;
+    }
 
     Queue sorted_nums1;
     declar_queue(&sorted_nums1);
@@ -30,6 +28,11 @@ int main()
     clock_t end2 = clock();
     printf("Время выполнения быстрой сортировки: %f\n", (float)(end2 - start2) / CLOCKS_PER_SEC);
 
+    char o_filename[256];
+    if (create_output(o_filename)) {
+        return 4;
+    }
+    output(nums, o_filename);
     output(sorted_nums2, o_filename);
 
     return 0;
